@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 import './App.css';
 import Header from './Components/Header';
 import About from './Components/About';
@@ -9,7 +10,35 @@ import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 
 class App extends Component {
+  
+  constructor(props){
+    super(props);
+    this.state = {
+      portfolioData: {}
+    }
+  }
+
+  getPortfolioData(){
+    $.ajax({
+      url: 'http://localhost:3000/portfolioData.json',
+      dataType: 'json',
+      cache: false,
+      success: function(data){
+        this.setState({portfolioData: data});
+      }.bind(this),
+      error: function(xhr, status, err){
+        console.log(err);
+        alert(err);
+      }
+    });
+  }
+
+  componentDidMount(){
+    this.getPortfolioData();
+  }
+
   render() {
+    console.log(this.state.portfolioData);
     return (
       <div className="App">
         <Header />
