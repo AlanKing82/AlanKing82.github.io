@@ -38,12 +38,12 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.portfolioData);
+  
     return (
       <div className="App">
-        <Header />
-        <About />
-        <Resume />
+        <Header data={this.state.portfolioData.main} />
+        <About data={this.state.portfolioData.main} />
+        <Resume data={this.state.portfolioData.resume} />
         <Portfolio />
         <Testimonials />
         <Contact />
