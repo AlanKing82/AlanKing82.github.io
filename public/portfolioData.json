@@ -1,6 +1,6 @@
 {
   "main": {
-    "name":"Alan King",
+    "name":"?????",
     "occupation":"front-end and multimedia developer",
     "description":"I design and program websites and web applications of all types.",
     "image":"profilepic.jpg",
@@ -9,8 +9,8 @@
     "phone": "555-555-5555",
     "address":{
       "street":"Patch",
-      "town": "Moylough",
-      "city":"Galway",
+      "town": "bbbb",
+      "city":"San Francisco",
       "state":"IRE"
     },
     "website": "http://www.kingpalan.com",

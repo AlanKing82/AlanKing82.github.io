@@ -8,6 +8,7 @@ import Portfolio from './Components/Portfolio';
 import Testimonials from './Components/Testimonials';
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
+import Animation from './Components/Animation';
 
 class App extends Component {
   
@@ -41,6 +42,7 @@ class App extends Component {
   
     return (
       <div className="App">
+      <Animation />
         <Header data={this.state.portfolioData.main} />
         <About data={this.state.portfolioData.main} />
         <Resume data={this.state.portfolioData.resume} />
