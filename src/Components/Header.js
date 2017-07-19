@@ -1,6 +1,31 @@
 import React, { Component } from 'react';
+import Slider from './Slider';
 
 class Header extends Component {
+  
+    constructor () {
+    super();
+    this.state = {
+      images: [
+        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-1.jpg',
+        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-2.jpg',
+        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-3.jpg',
+        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-4.jpg',
+        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-5.jpg',
+      ]
+    }
+    this.state.images.forEach(image => {
+      const preload = new Image();
+      preload.src = image;
+    })
+  }
+  
+  
+  
+  
+  
+  
+  
   render() {
     if(this.props.data){
       var name = this.props.data.name,
@@ -14,8 +39,23 @@ class Header extends Component {
 
     }
 
+    const { images } = this.state;
+    const slides = images.map(image => {
+      return {
+        content: <img src={image}/>,
+        preview: <img src={image}/>
+      }
+    });
+
     return (
+      <div>
+    <Slider
+      slides={slides}
+      animSettings={{animDuration: 500, animElasticity: 200}}
+      dotSettings={{size: 12, gap: 6}} /> 
+
    <header id="home">
+
 
       <nav id="nav-wrap">
 
@@ -31,8 +71,11 @@ class Header extends Component {
             <li><a className="smoothscroll" href="#contact">Contact</a></li>
          </ul>
 
-      </nav> 
+      </nav>
+    
 
+
+{/*
       <div className="row banner">
          <div className="banner-text">
             <h1 className="responsive-headline">Im {name}.</h1>
@@ -43,12 +86,14 @@ class Header extends Component {
             </ul>
          </div>
       </div>
+  */}
 
       <p className="scrolldown">
          <a className="smoothscroll" href="#about"><i className="icon-down-circle"></i></a>
       </p>
 
    </header>
+   </div>
     );
   }
 }
