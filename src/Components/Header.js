@@ -3,22 +3,39 @@ import Slider from './Slider';
 
 class Header extends Component {
   
-    constructor () {
-    super();
-    this.state = {
-      images: [
-        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-1.jpg',
-        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-2.jpg',
-        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-3.jpg',
-        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-4.jpg',
-        'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-5.jpg',
-      ]
+    constructor (props) {
+      super();
+      console.log(super(props))
+
+      var sliderImgs = Array(5).fill('');
+    
+      this.state = {
+        images: sliderImgs
+      }
+
+
+
+
+      // this.state = {
+      //   images: [
+      //     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-1.jpg',
+      //     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-2.jpg',
+      //     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-3.jpg',
+      //     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-4.jpg',
+      //     'https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-5.jpg',
+      //   ]
+      // }
+      this.state.images.forEach(image => {
+        const preload = new Image();
+        preload.src = image;
+      })
     }
-    this.state.images.forEach(image => {
-      const preload = new Image();
-      preload.src = image;
-    })
-  }
+
+
+
+    componentWillReceiveProps(props) {
+        this.setState({images: props.data.slider});
+    }
   
   
   
@@ -27,19 +44,24 @@ class Header extends Component {
   
   
   render() {
-    if(this.props.data){
-      var name = this.props.data.name,
-          occupation = this.props.data.occupation,
-          description = this.props.data.description,
-          city = this.props.data.address.city;
+    // if(this.props.data){
+    //   var name = this.props.data.name,
+    //       occupation = this.props.data.occupation,
+    //       description = this.props.data.description,
+    //       city = this.props.data.address.city;
        
-       var networks = this.props.data.social.map(function(network){
-         return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
-       });
+    //    var networks = this.props.data.social.map(function(network){
+    //      return <li key={network.name}><a href={network.url}><i className={network.className}></i></a></li>
+    //    });
 
-    }
+    // }
+
+    // if(this.props.data){
+    //   console.log(this.props.data)
+    // }
 
     const { images } = this.state;
+    
     const slides = images.map(image => {
       return {
         content: <img src={image}/>,
@@ -52,7 +74,7 @@ class Header extends Component {
     <Slider
       slides={slides}
       animSettings={{animDuration: 500, animElasticity: 200}}
-      dotSettings={{size: 12, gap: 6}} /> 
+      dotSettings={{size: 24, gap: 6}} /> 
 
    <header id="home">
 

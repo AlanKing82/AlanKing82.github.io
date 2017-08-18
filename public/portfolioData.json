@@ -51,7 +51,15 @@
         "url":"http://skype.com",
         "className":"fa fa-skype"
       }
-    ]
+    ],
+  "slider":[
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-1.jpg",
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-2.jpg",
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-3.jpg",
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-4.jpg",
+          "https://s3-us-west-2.amazonaws.com/s.cdpn.io/186499/slide-5.jpg"
+        ]
+    
   },
   "resume":{
     "education":[
